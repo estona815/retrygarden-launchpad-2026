@@ -2,7 +2,7 @@
 
 A local, deterministic teaching tool for retry policies, lost acknowledgements,
 finite server capacity and duplicate effects. Original implementation for
-LaunchPad Hacks, begun October 20, 2026. Not registered or submitted yet.
+LaunchPad Hacks, begun October 20, 2026. Individual event registration is complete. Final project submission remains pending.
 
 ## Run
 
@@ -63,10 +63,14 @@ An analytical 80-client horizon case distinguishes 76 still-scheduled clients
 from attempt-exhausted clients; the UI reports these separately.
 Actual browser checks exercised deduplication, scenario changes, trace selection
 and a JSON download; downloaded settings and duplicate-effect accounting were
-checked. Desktop and a 390 CSS-pixel iframe were visually reviewed. These are
-producer checks, not independent review, measured user impact or organizer
-approval. This source is prepared for public review. Independent review,
-event registration and submission are pending.
+checked. Desktop and a 390 CSS-pixel iframe were visually reviewed by the producer.
+A separate source/model/packet reviewer verified these seven files and the source
+archive, reran all nine tests, and compared 3,200 full traces and final client
+states against an independently implemented event-queue reference model using
+BigInt random-number arithmetic. A final-attempt lost-response counterexample
+also passed. That review did not repeat live browser or assistive-technology
+testing. No measured user impact or organizer approval is claimed. Individual
+event registration is complete; final project submission remains pending.
 
 ## Attribution
 
