@@ -2,7 +2,7 @@
 
 A local, deterministic teaching tool for retry policies, lost acknowledgements,
 finite server capacity and duplicate effects. Original implementation for
-LaunchPad Hacks, begun October 20, 2026. Individual event registration is complete. Final project submission remains pending.
+LaunchPad Hacks, begun October 20, 2026. Individual event registration is complete. Final project submission was completed on October 20, 2026.
 
 ## Run
 
@@ -70,7 +70,7 @@ states against an independently implemented event-queue reference model using
 BigInt random-number arithmetic. A final-attempt lost-response counterexample
 also passed. That review did not repeat live browser or assistive-technology
 testing. No measured user impact or organizer approval is claimed. Individual
-event registration is complete; final project submission remains pending.
+event registration is complete; final project submission was completed on October 20, 2026.
 
 ## Attribution
 
