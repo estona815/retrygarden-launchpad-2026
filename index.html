@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RetryGarden — a synthetic network lab</title><link rel="stylesheet" href="style.css"></head>
+<body><header><strong>RetryGarden</strong><button id="export" type="button">Export trace</button></header>
+<main><section class="intro"><h1>When a retry becomes a crowd.</h1><p>A synthetic network lab. No requests leave your browser.</p></section>
+<div class="lab"><form id="settings"><h2>Scenario</h2><label class="stack" for="scenario">Scenario<select id="scenario"><option value="lost-ack">Lost acknowledgement</option><option value="capacity">Capacity squeeze</option><option value="outage">Temporary outage</option></select></label>
+<label for="clients">Clients<input id="clients" type="number" min="1" max="80" value="8" required></label>
+<label for="capacity">Capacity / tick<input id="capacity" type="number" min="1" max="80" value="3" required></label>
+<label for="attempts">Attempts / client<input id="attempts" type="number" min="1" max="8" value="4" required></label>
+<label for="seed">Seed<input id="seed" type="number" min="0" max="4294967295" value="42" required></label>
+<h3>Retry policy comparison</h3><label for="delay">Fixed delay<input id="delay" type="number" min="1" max="16" value="2" required><span>ticks</span></label>
+<label for="jitter">Full jitter cap<input id="jitter" type="number" min="1" max="32" value="8" required><span>ticks</span></label>
+<p class="small">Jitter: 1 to min(cap, 2<sup>attempt</sup>) ticks.</p>
+<label class="check"><input id="deduplicate" type="checkbox">Deduplicate operations</label>
+<button class="primary" type="submit">Run comparison</button><p id="error" role="alert"></p><p id="dirty" class="small" role="status"></p></form>
+<section class="workspace" aria-labelledby="comparison-title"><h2 id="comparison-title">Same outage. Two retry policies.</h2><div class="legend"><span class="fixed">Fixed delay</span><span class="jitter">Full jitter</span></div>
+<div id="chart"></div><div class="table-wrap"><table class="summary"><caption class="sr-only">Comparison from the last completed run</caption><thead><tr><th scope="col">Policy</th><th scope="col">Attempts</th><th scope="col">Effects</th><th scope="col">Acknowledged</th><th scope="col">Pending</th></tr></thead><tbody id="summary"></tbody></table></div>
+<p id="result-note" class="small" aria-live="polite"></p><div class="trace-heading"><h2>Inspect an attempt</h2><label for="policy">Trace<select id="policy"><option value="fixed">Fixed delay</option><option value="jitter">Full jitter</option></select></label></div>
+<div class="table-wrap trace-scroll" tabindex="0" aria-label="Attempt trace, scroll for additional rows"><table><thead><tr><th scope="col">Tick</th><th scope="col">Client</th><th scope="col">Attempt</th><th scope="col">Result</th><th scope="col">Server effect</th></tr></thead><tbody id="trace"></tbody></table></div>
+<p id="detail" class="small" aria-live="polite">Choose an attempt to inspect its next step.</p><p class="principle">A missing response is not proof of a failed operation.</p>
+</section></div><footer>Teaching model: discrete ticks, synthetic failures and bounded retries. This is not a production network benchmark. Simultaneous clients use stable ID order; pending includes exhausted clients. <a href="README.md">Model and setup</a></footer></main><script type="module" src="app.mjs"></script></body></html>
